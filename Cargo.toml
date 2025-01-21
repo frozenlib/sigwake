@@ -1,0 +1,30 @@
+[package]
+name = "sigwake"
+version = "0.0.1"
+edition = "2024"
+authors = ["frozenlib <frozenlib@users.noreply.github.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/frozenlib/sigwake"
+documentation = "https://docs.rs/sigwake/"
+keywords = ["async", "reactive", "state-management", "signal", "multithreading"]
+categories = ["asynchronous", "concurrency", "rust-patterns"]
+description = "A thread-safe signal-based state management library that integrates with Rust's async programming model"
+rust-version = "1.85.0"
+
+
+[dependencies]
+slabmap = "0.2.1"
+derive-ex = "0.1.8"
+futures = "0.3.31"
+
+[dev-dependencies]
+test-strategy = "0.4.0"
+proptest = "1.5.0"
+tokio = { version = "1.43.0", "features" = [
+    "rt",
+    "rt-multi-thread",
+    "macros",
+    "time",
+] }
+assert-call = "0.1.1"
+anyhow = "1.0.95"
