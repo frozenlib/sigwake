@@ -10,7 +10,7 @@ sigwake is a library that reinterprets signal-based state management (commonly u
 
 ## Features
 
-- Supports reactive programming with Signal-style dependency tracking from state access
+- Supports reactive programming with Signal-based dependency tracking from state access
 - Integration with Rust's asynchronous programming model (`async/await`, `Future`, `Waker`)
 - Thread-safe implementation
 - Runtime-agnostic implementation that can be used with any async runtime
