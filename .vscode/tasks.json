@@ -45,6 +45,25 @@
     },
     {
       "type": "shell",
+      "label": "cargo test doc",
+      "command": "cargo",
+      "args": [
+        "test",
+        "--doc",
+      ],
+      "problemMatcher": [
+        "$rustc"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "dependsOn": [
+        "rustdoc-include"
+      ],
+    },
+    {
+      "type": "shell",
       "label": "cargo watch test",
       "command": "cargo-watch",
       "args": [
