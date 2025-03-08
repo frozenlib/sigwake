@@ -10,7 +10,14 @@ keywords = ["async", "reactive", "state-management", "signal", "multithreading"]
 categories = ["asynchronous", "rust-patterns"]
 description = "A thread-safe signal-based state management library that integrates with Rust's async programming model"
 rust-version = "1.85.0"
-
+include = [
+    "src/**",
+    "examples/**",
+    "tests/**",
+    "README.md",
+    "README.*.md",
+    "LICENSE*",
+]
 
 [dependencies]
 slabmap = "0.2.1"
