@@ -512,12 +512,12 @@ mod tests {
             for (x, _) in g.xs() {
                 let es = to_vec_sorted(g.ys_from_x(x));
                 let es_ref = to_vec_sorted(g_ref.ys_from_x(x));
-                assert_eq!(es, es_ref, "ys_from(x = {:?})", x);
+                assert_eq!(es, es_ref, "ys_from(x = {x:?})");
             }
             for (y, _) in g.ys() {
                 let es = to_vec_sorted(g.xs_from_y(y));
                 let es_ref = to_vec_sorted(g_ref.xs_from_y(y));
-                assert_eq!(es, es_ref, "xs_from(y = {:?})", y);
+                assert_eq!(es, es_ref, "xs_from(y = {y:?})");
             }
         }
     }
