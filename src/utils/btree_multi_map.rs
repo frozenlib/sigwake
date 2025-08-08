@@ -59,7 +59,7 @@ where
     pub fn first_key(&self) -> Option<&K> {
         Some(&self.entries.first_key_value()?.0.0)
     }
-    pub fn first_entry(&mut self) -> Option<btree_map::OccupiedEntry<(K, usize), V>> {
+    pub fn first_entry(&mut self) -> Option<btree_map::OccupiedEntry<'_, (K, usize), V>> {
         self.entries.first_entry()
     }
 }

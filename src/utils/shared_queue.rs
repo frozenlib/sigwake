@@ -116,7 +116,7 @@ impl<T> SharedQueueReader<'_, T> {
         self.index += 1;
         Some(value)
     }
-    pub fn iter(&mut self) -> SharedQueueIter<T> {
+    pub fn iter(&mut self) -> SharedQueueIter<'_, T> {
         self.into_iter()
     }
 }
