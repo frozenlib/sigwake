@@ -1,5 +1,5 @@
 use std::mem::transmute;
-use std::sync::Arc;
+use std::sync::{Arc, MutexGuard};
 use std::task::{Context, Poll, Waker};
 use std::time::Instant;
 use std::{future::poll_fn, sync::Mutex};
@@ -204,10 +204,21 @@ impl<St> StateContainer<St> {
             }
         })
     }
+    pub fn lock_untracked<'a>(&'a self) -> UntrackedState<'a, St> {
+        UntrackedState(self.0.lock().unwrap())
+    }
 
     pub fn update<T>(&self, f: impl FnOnce(&mut St, &mut StateContext) -> T) -> T {
         let ss = &mut *self.0.lock().unwrap();
         f(&mut ss.st, ss.g.context())
+    }
+}
+
+pub struct UntrackedState<'a, St>(MutexGuard<'a, RawStateContainer<St>>);
+impl<'a, St> std::ops::Deref for UntrackedState<'a, St> {
+    type Target = St;
+    fn deref(&self) -> &Self::Target {
+        &self.0.st
     }
 }
 

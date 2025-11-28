@@ -14,6 +14,9 @@ impl<T> Value<T> {
         self.key.watch(cx);
         &self.value
     }
+    pub fn get_untracked(&self) -> &T {
+        &self.value
+    }
     pub fn get_mut(&mut self, cx: &mut StateContext) -> &mut T {
         self.key.notify(cx);
         self.key.watch(cx);

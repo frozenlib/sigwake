@@ -318,3 +318,23 @@ async fn dependency_with_unused_target() {
     sleep(Duration::from_millis(10)).await;
     cr.verify(["0", "1", "2", "3"]);
 }
+
+#[test]
+async fn test_untracked() {
+    struct St {
+        value: Value<u32>,
+    }
+    impl St {
+        fn new() -> StateContainer<Self> {
+            StateContainer::new(|cx| Self {
+                value: Value::new(0, cx),
+            })
+        }
+    }
+    let st = St::new();
+    assert_eq!(*st.lock_untracked().value.get_untracked(), 0);
+    st.update(|st, cx| {
+        st.value.set(20, cx);
+    });
+    assert_eq!(*st.lock_untracked().value.get_untracked(), 20);
+}
